@@ -1,23 +1,26 @@
 // Components/Search.js
 
-import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, FlatList } from 'react-native';
-import films from '.../Utils/filmsData';
+import React from 'react'
+import { StyleSheet, View, TextInput, Button, Text, FlatList } from 'react-native'
+import films from '../utils/filmsData'
+import FilmItem from './FilmsItem'
+
 
 class Search extends React.Component {
+
   render() {
     return (
       <View style={styles.main_container}>
         <TextInput style={styles.textinput} placeholder='Titre du film'/>
         <Button title='Rechercher' onPress={() => {}}/>
         <FlatList
-          data={films}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <Text>{item.title}</Text>}
+            data={films}
+            keyExtractor={(item) => item.id.toString()}
+             renderItem={({item}) => <FilmItem film={item}/>}
 />
       </View>
     )
-  }
+}
 }
 
 const styles = StyleSheet.create({
