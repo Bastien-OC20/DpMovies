@@ -13,7 +13,7 @@ class Favorites extends React.Component {
       <FilmList
         films={this.props.favoritesFilm}
         navigation={this.props.navigation}
-        favoriteList={true} // Ici on est bien dans le cas de la liste des films favoris. Ce booléen à true permettra d'empêcher de lancer la recherche de plus de films après un scroll lorsqu'on est sur la vue Favoris.
+        favoriteList={true}
       />
     )
   }

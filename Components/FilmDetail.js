@@ -1,7 +1,7 @@
 // Components/FilmDetail.js
 
 import React from 'react'
-import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Image, Button } from 'react-native'
+import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { getFilmDetailFromApi, getImageFromApi } from '../API/ApiConnect'
 import moment from 'moment'
 import numeral from 'numeral'
@@ -18,15 +18,12 @@ class FilmDetail extends React.Component {
 
   componentDidMount() {
     const favoriteFilmIndex = this.props.favoritesFilm.findIndex(item => item.id === this.props.navigation.state.params.idFilm)
-    if (favoriteFilmIndex !== -1) { // Film déjà dans nos favoris, on a déjà son détail
-      // Pas besoin d'appeler l'API ici, on ajoute le détail stocké dans notre state global au state de notre component
+    if (favoriteFilmIndex !== -1) {
       this.setState({
         film: this.props.favoritesFilm[favoriteFilmIndex]
       })
       return
     }
-    // Le film n'est pas dans nos favoris, on n'a pas son détail
-    // On appelle l'API pour récupérer son détail
     this.setState({ isLoading: true })
     getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
       this.setState({
@@ -52,10 +49,10 @@ class FilmDetail extends React.Component {
   }
 
   _displayFavoriteImage() {
-    var sourceImage = require('../assets/Images/favorite_border.png')
+    var sourceImage = require('../assets/icons/PNG/favorite_border.png')
     if (this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1) {
       // Film dans nos favoris
-      sourceImage = require('../assets/Images/favorite.png')
+      sourceImage = require('../assets/icons/PNG/favorite.png')
     }
     return (
       <Image

@@ -8,11 +8,10 @@ class FilmItem extends React.Component {
 
   _displayFavoriteImage() {
     if (this.props.isFilmFavorite) {
-      // Si la props isFilmFavorite vaut true, on affiche le 🖤
       return (
         <Image
           style={styles.favorite_image}
-          source={require('../assets/Images/favorite.png')}
+          source={require('../assets/icons/PNG/favorite.png')}
         />
       )
     }
@@ -38,7 +37,7 @@ class FilmItem extends React.Component {
             <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
           </View>
           <View style={styles.date_container}>
-            <Text style={styles.date_text}>Sorti le 13/12/2017</Text>
+            <Text style={styles.date_text}>{film.release_date}</Text>
           </View>
         </View>
       </TouchableOpacity>

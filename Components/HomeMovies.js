@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
-import FilmItem from './FilmItem'
-import FilmList from './FilmList'
+import Search from './Search'
+
 import { getFilmsFromApiWithSearchedText } from '../API/ApiConnect'
 import { connect } from 'react-redux'
 
